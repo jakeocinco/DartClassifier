@@ -92,7 +92,7 @@ def getMultiplierModel(X_train, y_train, X_test, y_test):
 
     return sgd_clf
 
-def getPieModel(X_train, y_train, X_test, y_test, ms = 0.5, mf = 0.5):
+def getPieModel(X_train, y_train, X_test, y_test, ms = 0.25, mf = 0.9):
 
     training_data = np.array(X_train)
     training_class = np.array(y_train)
@@ -133,14 +133,5 @@ def getCounts(l):
 training_data, p_training_class, m_training_class = getTrainingData_multiplier()
 testing_data, p_testing_class, m_testing_class = getTestingData_multiplier()
 
-# mult_model = getMultiplierModel(training_data, m_training_class, testing_data, m_testing_class )
-
-s = [random.random() for _ in range(5)]
-f = [random.random() for _ in range(5)]
-
-results = []
-for ss in s:
-    for ff in f:
-        results += [{'acc':getPieModel(training_data, p_training_class, testing_data, p_testing_class, ms=ss, mf=ff), 's':ss, 'f':ff }]
-
-print(results)
+mult_model = getMultiplierModel(training_data, m_training_class, testing_data, m_testing_class )
+pie_model = getPieModel(training_data, p_training_class, testing_data, p_testing_class, ms=ss, mf=ff)
